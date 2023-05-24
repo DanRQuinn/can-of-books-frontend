@@ -4,7 +4,7 @@
 Andrew Carroll
 Dan Quinn
 
-**Version**: 1.0.3 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.0.5 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
@@ -22,6 +22,7 @@ Use this area to document the iterative changes made to your application as each
 
 05-22-2023 4:59pm - Application now has a fully-functional mongoose server
 05-23-2023 3:39pm - Application now has a front end with carosal
+05-23-2023 8:39pm - Application now has a front end with add book feature
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
@@ -75,6 +76,18 @@ Start time: 2
 Finish time: 3 30
 
 Actual time needed to complete: 1.5 hours
+
+---------------------------------------------
+
+Name of feature: Front end add book feature
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 7 30
+
+Finish time: 9 30
+
+Actual time needed to complete: 2 hours
 
 ---------------------------------------------
 
