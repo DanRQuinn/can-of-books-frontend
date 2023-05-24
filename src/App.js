@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import BestBooks from './BestBooks';
+import BestBooks from './BestBooks'
+import Books from './Books'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -16,13 +17,18 @@ class App extends React.Component {
         <Router>
           <Header />
           <Routes>
-            <Route 
+            <Route
+              // "/" is the homepage
               exact path="/"
+              //the homepage will render bestbooks js
               element={<BestBooks />}
             >
             </Route>
             {/* PLACEHOLDER: add a route with a path of '/about' that renders the `About` component */}
           </Routes>
+          <main>
+            <Books />
+          </main>
           <Footer />
         </Router>
       </>
