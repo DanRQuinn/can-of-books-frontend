@@ -7,6 +7,7 @@ import Image from 'react-bootstrap/Image';
 import myImage from './book-pic.jpeg'
 import { Container, Button } from 'react-bootstrap';
 import './App'
+import UpdateBookFormModal from './UpdateBookFormModal';
 //declare server telling it to get code from the .env
 let SERVER = process.env.REACT_APP_SERVER
 
@@ -17,6 +18,7 @@ class BestBooks extends React.Component {
     this.state = {
       books: [],
       isModalDisplaying: false
+
     }
   }
 
@@ -61,14 +63,31 @@ class BestBooks extends React.Component {
     this.postBook(newBook);
   }
 
-  deleteBook = async (book) => {
-    let id = book._id
+  deleteBook = async (id) => {
     console.log(id);
     try {
       let url = `${SERVER}/books/${id}`;
       await axios.delete(url);
       // this.getBooks();
-      let updatedBooks = this.state.books.filter(book => book._id !== id);
+      let deletedBooks = this.state.books.filter(book => book._id !== id);
+      this.setState({
+        books: deletedBooks
+      })
+    } catch (error) {
+      console.log('ERROR: ', error.response.data)
+    }
+  }
+
+  putBook = async (bookToUpdate) => {
+    try {
+      let url = `${SERVER}/books/${bookToUpdate._id}`;
+      await axios.delete(url);
+      // this.getBooks();
+      let updatedBooks = this.state.books.map(existingBook => {
+        return existingBook._id === bookToUpdate._id
+          ? updatedBooks.data
+          : existingBook;
+      });
       this.setState({
         books: updatedBooks
       })
@@ -113,6 +132,7 @@ class BestBooks extends React.Component {
             handleClose={this.handleCloseModal}
             handleShow={this.handleShowModal}
             handleBookSubmit={this.handleBookSubmit}
+            putBook={this.putBook}
           />
           <Button variant="primary" className="addButton" onClick={this.handleShowModal} > Add Book! </Button>
         </header>
@@ -124,6 +144,9 @@ class BestBooks extends React.Component {
 
               <Book
                 books={this.state.books}
+                deleteBook={this.deleteBook}
+                putBooks={this.putBooks}
+
               />
 
 
@@ -140,9 +163,18 @@ class BestBooks extends React.Component {
 export default BestBooks;
 
 class Book extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showUpdateForm: false
+
+    }
+  }
   render() {
+    console.log('props.books =>', this.props.books);
     let carouselSlides = this.props.books.map((book, index) => {
       return (
+
         <Carousel.Item key={index}>
           <Image className='w-100 h-25' src={myImage} alt='book' />
           <Carousel.Caption>
@@ -161,21 +193,40 @@ class Book extends React.Component {
               {/* get the description */}
               {book.description}
             </p>
-            
+
             {/* <p className='carousel-test'>
               
               {book.status}
             </p> */}
+            <Button
+              variant='dark'
+              onClick={() => this.props.deleteBook(book._id)}
+            >
+              delete book
+
+            </Button>
+            <Button
+              onClick={() => this.setState({ showUpdateForm: true })}
+            >
+              update book
+
+            </Button>
 
 
 
           </Carousel.Caption>
         </Carousel.Item>
+
+
       );
     });
     return (
       <>
         <Carousel>{carouselSlides}</Carousel>
+        {
+          this.state.showUpdateForm && <UpdateBookFormModal book={this.props.book} putBook={this.putBook} />
+        }
+        <h1>Hello</h1>
       </>
     )
   }
