@@ -3,6 +3,7 @@ import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import BookFormModal from './BookFormModal';
 import './BestBooks.css';
+import { withAuth0 } from "@auth0/auth0-react";
 import Image from 'react-bootstrap/Image';
 import myImage from './book-pic.jpeg'
 import { Container, Button } from 'react-bootstrap';
@@ -25,18 +26,21 @@ class BestBooks extends React.Component {
   /* TODO: Make a GET request to your API 'get' all the books from the database  */
 
   getBooks = async () => {
-    try {
-      //axios means we are going to get data from the backend
-      let results = await axios.get(`${SERVER}/books`);
-      console.log(results);
-      this.setState({
-        //filling empty books array from state with data from mongo db database, also data is 3rd requirement of axios after async and await
-        books: results.data,
-        hasBooks: true,
-      })
-    } catch (error) {
-      console.log('we have an error: ', error.response.data)
-    }
+    if (this.props.auth0.isAuthenticated){
+      
+      try {
+        //axios means we are going to get data from the backend
+        let results = await axios.get(`${SERVER}/books`);
+        console.log(results);
+        this.setState({
+          //filling empty books array from state with data from mongo db database, also data is 3rd requirement of axios after async and await
+          books: results.data,
+          hasBooks: true,
+        })
+      } catch(error) {
+        console.log('we have an error: ', error.response.data)
+      }
+    };
   }
 
   postBook = async (newBook) => {
@@ -95,6 +99,7 @@ class BestBooks extends React.Component {
       console.log('ERROR: ', error.response.data)
     }
   }
+
 
   handleShowModal = () => {
     this.setState({
@@ -160,7 +165,7 @@ class BestBooks extends React.Component {
   }
 }
 
-export default BestBooks;
+export default withAuth0(BestBooks);
 
 class Book extends React.Component {
   constructor(props) {
@@ -231,3 +236,4 @@ class Book extends React.Component {
     )
   }
 }
+
