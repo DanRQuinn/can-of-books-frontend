@@ -4,42 +4,92 @@
 Andrew Carroll
 Dan Quinn
 
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.0.5 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
 
+Book database
+
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
-
+Setup Front and back ends and populate server with dummy data
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
-
-## Estimates
-<!-- See below -->
+05-22-2023 4:59pm - Application now has a fully-functional mongoose server
+05-23-2023 3:39pm - Application now has a front end with carosal
+05-23-2023 8:39pm - Application now has a front end with add book feature
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-Time Estimates
+Photo by <a href="https://unsplash.com/@jareddc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jaredd Craig</a> on <a href="https://unsplash.com/images/things/book?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+## Time Estimates
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
-Name of feature: ________________________________
+Name of feature: Setup
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 45 min
 
-Start time: _____
+Start time: 3
 
-Finish time: _____
+Finish time: 7
 
-Actual time needed to complete: _____
+Actual time needed to complete: 4 hours
 
+---------------------------------------------
 
+Name of feature: Mongoose setup
 
+Estimate of time needed to complete: 2 hours
+
+Start time: 7
+
+Finish time: 7 30
+
+Actual time needed to complete: 30 min
+
+---------------------------------------------
+
+Name of feature: Front end carosal
+
+Estimate of time needed to complete: 1 hours
+
+Start time: 2
+
+Finish time: 3 30
+
+Actual time needed to complete: 1.5 hours
+
+---------------------------------------------
+
+Name of feature: Front end carosal
+
+Estimate of time needed to complete: 1 hours
+
+Start time: 2
+
+Finish time: 3 30
+
+Actual time needed to complete: 1.5 hours
+
+---------------------------------------------
+
+Name of feature: Front end add book feature
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 7 30
+
+Finish time: 9 30
+
+Actual time needed to complete: 2 hours
+
+---------------------------------------------
 
 # Getting Started with Create React App
 
