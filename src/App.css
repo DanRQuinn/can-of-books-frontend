@@ -32,7 +32,13 @@ img {
 .App-link {
   color: #61dafb;
 }
-
+div > a.nav-link {
+  color: azure;
+  transition: none;
+}
+div > a.nav-link:hover {
+  color: rgb(15, 230, 230);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
