@@ -19,7 +19,6 @@ class BestBooks extends React.Component {
     this.state = {
       books: [],
       isModalDisplaying: false
-
     }
   }
 
@@ -173,7 +172,6 @@ class Book extends React.Component {
     super(props);
     this.state = {
       showUpdateForm: false
-
     }
   }
   handleShowUpdateModal = (bookToBeUpdated) => {
