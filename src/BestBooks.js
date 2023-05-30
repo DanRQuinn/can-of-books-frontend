@@ -84,18 +84,19 @@ class BestBooks extends React.Component {
   putBook = async (bookToUpdate) => {
     try {
       let url = `${SERVER}/books/${bookToUpdate._id}`;
-      await axios.delete(url);
+      await axios.put(url);
       // this.getBooks();
       let updatedBooks = this.state.books.map(existingBook => {
+        console.log('HELP');
         return existingBook._id === bookToUpdate._id
-          ? updatedBooks.data
+          ? bookToUpdate
           : existingBook;
       });
       this.setState({
         books: updatedBooks
       })
     } catch (error) {
-      console.log('ERROR: ', error.response.data)
+      console.log('ERROR: ', error)
     }
   }
 
@@ -149,7 +150,7 @@ class BestBooks extends React.Component {
               <Book
                 books={this.state.books}
                 deleteBook={this.deleteBook}
-                putBooks={this.putBooks}
+                putBook={this.putBook}
 
               />
 
@@ -173,8 +174,21 @@ class Book extends React.Component {
       showUpdateForm: false
     }
   }
+  handleShowUpdateModal = (bookToBeUpdated) => {
+    console.log('in side UMF');
+    this.setState({
+      showUpdateForm: true,
+      bookToBeUpdated
+    });
+  }
+
+  handleCloseUpdateModal = () => {
+    this.setState({
+      showUpdateForm: false
+    })
+  }
   render() {
-    console.log('props.books =>', this.props.books);
+    console.log(this.state);
     let carouselSlides = this.props.books.map((book, index) => {
       return (
 
@@ -209,7 +223,8 @@ class Book extends React.Component {
 
             </Button>
             <Button
-              onClick={() => this.setState({ showUpdateForm: true })}
+              onClick={() => this.handleShowUpdateModal(book)}
+              variant='secondary'
             >
               update book
 
@@ -227,7 +242,7 @@ class Book extends React.Component {
       <>
         <Carousel>{carouselSlides}</Carousel>
         {
-          this.state.showUpdateForm && <UpdateBookFormModal book={this.props.book} putBook={this.putBook} />
+          this.state.showUpdateForm && <UpdateBookFormModal show={this.state.showUpdateForm} handleClose={this.handleCloseUpdateModal} book={this.state.bookToBeUpdated} putBook={this.props.putBook} />
         }
         <h1>Hello</h1>
       </>

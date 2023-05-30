@@ -12,18 +12,20 @@ class UpdateBookFormModal extends React.Component {
       _id: this.props.book._id,
       __v: this.props.book.__v
     };
+    console.log(bookToUpdate);
     this.props.putBook(bookToUpdate)
   }
   render() {
+    console.log(this.props);
     return (
       <>
         <Modal show={this.props.show} onHide={this.props.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.props.title} Add-A-Book</Modal.Title>
+            <Modal.Title>Update a Book</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Container>
-              <Form onSubmit={this.props.handleBookSubmit}>
+              <Form onSubmit={this.handleSubmit}>
                 <Form.Group controlId="title">
                   <Form.Label> Title</Form.Label>
                   <Form.Control type="text" placeholder={this.props.book.title}/>
@@ -39,7 +41,7 @@ class UpdateBookFormModal extends React.Component {
                 <Form.Group controlId="status">
                   <Form.Check type="checkbox" label="Finished book" />
                 </Form.Group>
-                <Button type="submit">Add Book! </Button>
+                <Button type="submit">Update a Book</Button>
               </Form>
             </Container>
           </Modal.Body>

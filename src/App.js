@@ -7,7 +7,9 @@ import BestBooks from './BestBooks'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginButton from './LoginButtton';
 import LogoutButton from './LogoutButton';
-// import Profile from './Profile';
+import Profile from './Profile';
+import About from './About';
+import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
@@ -27,6 +29,7 @@ class App extends React.Component {
           <Header />
           <Container>
             <Routes>
+              
               {this.props.auth0.isAuthenticated &&
 
                 <Route
@@ -37,6 +40,24 @@ class App extends React.Component {
                 >
                 </Route>
               }
+              {this.props.auth0.isAuthenticated &&
+
+                <Route
+                  // "/" is the homepage
+                  exact path="/profile"
+                  //the homepage will render bestbooks js
+                  element={<Profile />}
+                >
+                </Route>
+                }
+
+                <Route
+                  // "/" is the homepage
+                  exact path="/about"
+                  //the homepage will render bestbooks js
+                  element={<About />}
+                >
+                </Route>
               {/* PLACEHOLDER: add a route with a path of '/about' that renders the `About` component */}
             </Routes>
           </Container>

@@ -1,11 +1,18 @@
 import { Component } from "react";
 
-class Profile extends Component {
+class About extends Component {
 
   render() {
     /* TODO: render information about the developers */
-    return <p>Soon Dragons Be Here...</p>
+    
+
+      <h1></h1>
+    
+    return (
+      <p>An unstoppable coding force. They are sure to wreck the industry with their creativity and determination. When they are not slaying servers they take time to sit down and indulge in the pleasures of literature. We hope you enjoy their private selection.</p>
+    )
+
   }
 };
 
-export default Profile;
+export default About;
